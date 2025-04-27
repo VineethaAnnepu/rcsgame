@@ -1,0 +1,347 @@
+:root {
+    --bg-color: #8CC461;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    background-image: none;
+}
+
+.header {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    border-radius: 20px;
+    height: 20vh;
+}
+
+.header .logo div {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.scores {
+    display: flex;
+    gap: 2rem;
+}
+
+.both-scores {
+    background-color: #fff;
+    color: black;
+    width: 10vw;
+    text-align: center;
+    padding: 0.25rem;
+    border-radius: 20px;
+}
+
+.both-scores div {
+    font-size: 1.15rem;
+    color: #656565;
+    font-weight: 600;
+    padding: 0.25rem 0;
+}
+
+.both-scores span {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.play {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 400px;
+}
+
+.bg-triangle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    z-index: -1;
+    background-image: url('bg-triangle.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* Common styles for all options */
+.rock, .paper, .scissors {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.rock {
+    top: 10%;
+    left: 15%;
+}
+
+.scissors {
+    top: 10%;
+    right: 15%;
+}
+
+.paper {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-buttons button {
+    padding: 10px 30px;
+    font-size: 16px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-buttons button:hover {
+    background-color: white;
+    color: #66cc66;
+}
+
+.footer-buttons button.inactive {
+    display: none;
+}
+
+.game-rules {
+    width: 250px;
+    position: fixed;
+    right: -300px; 
+    bottom: 100px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #004429;
+    padding: 1rem;
+    border: 4px solid #fff;
+    color: white;
+    border-radius: 10px;
+    transition: all 0.35s ease;
+    z-index: 3;
+}
+#cross {
+    position: absolute;
+    top: -1.5rem; 
+    right: -1rem; 
+    border: 4px solid white;
+    font-size: 1.25rem;
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    background-color: rgb(237, 13, 13);
+    border-radius: 50%;
+    display: none; 
+    transition: all 0.35s ease;
+    z-index: 2;
+}
+
+.game-rules.active {
+    right: 20px; 
+}
+
+.game-rules h2 {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.game-rules ul {
+    list-style-type: none;
+    text-align: left;
+    height: auto; 
+}
+
+.game-rules ul li {
+    display: flex;
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+}
+
+.game-rules ul li::before {
+    content: "\25A0"; 
+    color: #FFD600;
+    margin-right: 8px;
+}
+.game-rules.active #cross {
+    display: block;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    width: max-content;
+    align-items: center;
+    margin-top: 10%;
+    width: 60vw;
+}
+
+.result-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.result-content div {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.result-content .won-lost {
+    font-size: 2.5rem;
+}
+
+.player-choice,
+.pc-choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.player-choice img,
+.pc-choice img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+.player-choice .ring,
+.pc-choice .ring {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.play-again-btn {
+    outline: none;
+    border: none;
+    color: #6B6B6B;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.65rem 1rem;
+    border-radius: 5px;
+}
+
+.hurray {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hurray img {
+    height: 150px;
+}
+
+.trophy {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    background-image: url(hurray-bg.png);
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.hurray h2,
+.hurray h3 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.hurray h2 {
+    font-size: 6rem;
+}
+
+.hurray button {
+    margin-top: 2rem;
+}
+
+button:hover {
+    transition: all 0.25s ease;
+    font-size: 1rem;
+}
+
+.play img:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
+}
+
+.inactive {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+header,
+.result,
+main,
+footer,
+.hurray {
+    transition: all 0.75s ease;
+}
+
